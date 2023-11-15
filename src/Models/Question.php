@@ -23,7 +23,14 @@ class Question extends Model implements QuestionContract, Sortable
      *
      * @var array
      */
-    protected $fillable = ['type', 'options', 'content', 'rules', 'survey_id'];
+    protected $fillable = [
+        'type',
+        'options',
+        'content',
+        'rules',
+        'survey_id',
+        'section_id',
+    ];
 
     protected $casts = [
         'rules' => 'array',
@@ -32,6 +39,11 @@ class Question extends Model implements QuestionContract, Sortable
     public $translatable = [
         'content',
         'options',
+    ];
+
+    public $sortable = [
+        'order_column_name' => 'order',
+        'sort_when_creating' => true,
     ];
 
     /**
